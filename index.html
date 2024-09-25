@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+            <style>* {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        /* Estilo del header con el logo y el título */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px; /* Tamaño del logo */
+            height: auto;
+        }
+
+        .title {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .search-filter {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        #search {
+            padding: 10px;
+            width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #categoryFilter {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Estilos para la grid */
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .channel-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .channel-card img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .channel-info {
+            padding: 15px;
+        }
+
+        .channel-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .channel-info p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #777;
+        }
+
+        .channel-info button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ff5a5f;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .channel-info button:hover {
+            background-color: #ff3339;
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .logo {
+                width: 40px; /* Ajustar el tamaño del logo en pantallas más pequeñas */
+            }
+
+            .search-bar input,
+            .search-bar select {
+                width: 150px;
+            }
+
+            /* Aquí se especifican al menos 2 columnas en pantallas pequeñas */
+            .channel-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* En pantallas muy pequeñas se ajusta nuevamente a 1 columna */
+            .channel-grid {
+                grid-template-columns: 1fr;
+            }
+        }</style>
+        </head>
+        <body>
+            
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Channel Grid</title>
+  <link rel="stylesheet" href="styles.css">
+
+
+  <!-- Header con logo y título -->
+    <header class="header">
+        <div class="logo-title-container">
+            <img src="https://i.postimg.cc/QCCxSLtQ/LOGO-EHN.png" alt="Website Logo" class="logo">
+            <h1 class="title">Contenido en Videos</h1>
+        </div>
+
+    <!-- Barra de búsqueda y filtros -->
+    <div class="search-filter">
+      <input type="text" id="search" placeholder="Encuentra tu canal..." onkeyup="filterChannels()">
+      <select id="categoryFilter" onchange="filterChannels()">
+        <option value="">Todas las categorias</option>
+        <option value="Enseñanza Biblica">Enseñanza Biblia</option>
+        <option value="Educación">Education</option>
+        <option value="Predicación">Predicación</option>
+        <option value="Noticias y Novedades">Noticias y Novedades</option>
+        <option value="Música">Música</option>
+        <option value="Jóvenes">Jóvenes</option>
+        <option value="Kids">Kids</option>
+      </select>
+    </div>
+
+    <!-- Grid de canales -->
+    <div class="channel-grid" id="channelGrid">
+      <!-- Cada canal es una tarjeta -->
+      <!-- CANAL 1 -->
+      <div class="channel-card" data-category="Enseñanza Biblica">
+        <img src="https://i.postimg.cc/CLRzsYym/QUE-DICE-LA-BIBLIA-Canal-de-You-Tube.jpg" alt="Channel 1">
+        <div class="channel-info">
+          <h2>Qué dice La Biblia</h2>
+          <p>Enseñanza Biblica</p>
+          <button onclick="openChannel('https://youtube.com/@quedicelabiblia-oficial')">Ir al Canal</button>
+        </div>
+      </div>
+      <!-- CANAL 2 -->
+      <div class="channel-card" data-category="Enseñanza Biblica">
+        <img src="https://i.postimg.cc/3wXy0BMh/LOGOSTV-Canal-de-You-Tube.png" alt="Channel 2">
+        <div class="channel-info">
+          <h2>Logos TV</h2>
+          <p>Noticias y Novedades</p>
+          <button onclick="openChannel('https://youtube.com/@logostv')">Ir al canal</button>
+        </div>
+      </div>
+      <!-- CANAL 3 -->
+      <div class="channel-card" data-category="Enseñanza Biblica">
+        <img src="https://i.postimg.cc/dt5gwPLP/MINISTERIOS-LIGONIER-Canal-de-You-Tube.jpg" alt="Channel 3">
+        <div class="channel-info">
+          <h2>Ministerios Ligonier</h2>
+          <p>Enseñanza Biblica</p>
+          <button onclick="openChannel('https://www.youtube.com/channel/UC3')">View Videos</button>
+        </div>
+      </div>
+      <!-- CANAL 4 -->
+      <div class="channel-card" data-category="Enseñanza Biblica">
+        <img src="https://i.postimg.cc/25DQt3rz/COALICI-N-POR-EL-EVANGELIO-Canal-de-You-Tube.jpg" alt="Channel 4">
+        <div class="channel-info">
+          <h2>Coalición por el Evangelio</h2>
+          <p>Enseñanza Biblica</p>
+          <button onclick="openChannel('https://www.youtube.com/channel/UC4')">View Videos</button>
+        </div>
+      </div>
+      <!-- CANAL 5 -->
+        <div class="channel-card" data-category="Enseñanza Biblica">
+        <img src="https://i.postimg.cc/q7W9S9jc/PROYECTO-BIBLIA-Canal-de-You-Tube.jpg" alt="Channel 4">
+        <div class="channel-info">
+          <h2>Proyecto Biblia</h2>
+          <p>Enseñanza Biblica</p>
+          <button onclick="openChannel('https://www.youtube.com/channel/UC4')">View Videos</button>
+        </div>
+      </div>
+      <!-- CANAL 6 -->
+        <div class="channel-card" data-category="Noticias y Novedades">
+        <img src="https://i.postimg.cc/nrpqjRcb/BIBLIA-LIBRE-Canal-de-You-Tube.jpg" alt="Channel 4">
+        <div class="channel-info">
+          <h2>Biblia Libre</h2>
+          <p>Noticias y Novedades</p>
+          <button onclick="openChannel('https://www.youtube.com/@BibliaLibre')">Ir al canal</button>
+        </div>
+      </div>
+      <!-- CANAL 7 -->
+      <div class="channel-card" data-category="Noticias y Novedades">
+        <img src="https://i.postimg.cc/bvqP51JY/LO-DE-DAVI-Canal-de-You-Tube.jpg" alt="Channel 4">
+        <div class="channel-info">
+          <h2>Lo de Davi</h2>
+          <p>Noticias y Novedades</p>
+          <button onclick="openChannel('https://www.youtube.com/@LodeDavi')">Ir al canal</button>
+        </div>
+      </div>
+      <!-- CANAL 8 -->
+      <div class="channel-card" data-category="Enseñanza Biblica">
+        <img src="https://i.postimg.cc/fT4RKtxy/IBSJ-Canal-de-You-Tube.jpg" alt="Channel 4">
+        <div class="channel-info">
+          <h2>Iglesia Biblica del Señor Jesucristo</h2>
+          <p>Enseñanza Biblica</p>
+          <button onclick="openChannel('https://www.youtube.com/channel/UC4')">Ir al canal</button>
+        </div>
+      </div>
+      <!-- CANAL 9 -->
+      <div class="channel-card" data-category="Enseñanza Biblica">
+        <img src="https://i.postimg.cc/fT4RKtxy/IBSJ-Canal-de-You-Tube.jpg" alt="Channel 4">
+        <div class="channel-info">
+          <h2>Pastor Will Graham</h2>
+          <p>Enseñanza Biblica</p>
+          <button onclick="openChannel('https://www.youtube.com/channel/UC4')">Ir al canal</button>
+        </div>
+      </div>
+      <!-- CANAL 10 -->
+      <div class="channel-card" data-category="Enseñanza Biblica">
+        <img src="https://i.postimg.cc/fT4RKtxy/IBSJ-Canal-de-You-Tube.jpg" alt="Channel 4">
+        <div class="channel-info">
+          <h2>Iglesia Biblica del Señor Jesucristo</h2>
+          <p>Enseñanza Biblica</p>
+          <button onclick="openChannel('https://www.youtube.com/channel/UC4')">Ir al canal</button>
+        </div>
+      </div>
+    </div>
+  
+
+  <script src="script.js"></script>
+
+
+
+            <script>// Abre el canal de YouTube
+function openChannel(url) {
+  window.open(url, '_blank');
+}
+
+// Función para filtrar los canales
+function filterChannels() {
+  const searchInput = document.getElementById('search').value.toLowerCase();
+  const categoryFilter = document.getElementById('categoryFilter').value;
+  const channelCards = document.querySelectorAll('.channel-card');
+
+  channelCards.forEach(card => {
+    const channelName = card.querySelector('h2').innerText.toLowerCase();
+    const channelCategory = card.getAttribute('data-category');
+
+    if (
+      (channelName.includes(searchInput) || searchInput === '') &&
+      (channelCategory === categoryFilter || categoryFilter === '')
+    ) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+</script>
+        
+    
+</header></body>

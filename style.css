@@ -1,0 +1,136 @@
+* {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        /* Estilo del header con el logo y el título */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px; /* Tamaño del logo */
+            height: auto;
+        }
+
+        .title {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .search-filter {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        #search {
+            padding: 10px;
+            width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #categoryFilter {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Estilos para la grid */
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .channel-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .channel-card img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .channel-info {
+            padding: 15px;
+        }
+
+        .channel-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .channel-info p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #777;
+        }
+
+        .channel-info button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ff5a5f;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .channel-info button:hover {
+            background-color: #ff3339;
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .logo {
+                width: 40px; /* Ajustar el tamaño del logo en pantallas más pequeñas */
+            }
+
+            .search-bar input,
+            .search-bar select {
+                width: 150px;
+            }
+
+            /* Aquí se especifican al menos 2 columnas en pantallas pequeñas */
+            .channel-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* En pantallas muy pequeñas se ajusta nuevamente a 1 columna */
+            .channel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
